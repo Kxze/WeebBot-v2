@@ -29,7 +29,14 @@ export default ({ client, config, db, logger }: IModuleParams) => {
         await Promise.all(promises);
     }
 
+    const logError = (err: any) => {
+        console.error(err);
+    }
+
     ws.on("quest", handleQuest);
+    ws.on("connect", () => console.log("Connected"));
+    ws.on("connect_timeout", logError);
+    ws.on("connect_error", logError);
 
     ws.connect();
 
