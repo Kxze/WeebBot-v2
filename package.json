@@ -25,7 +25,6 @@
     "mysql": "^2.18.1",
     "node-fetch": "^2.1.2",
     "socket.io-client": "^2.3.0",
-    "sqlite3": "^4.1.1",
     "typescript": "^2.9.2",
     "winston": "github:winstonjs/winston#master",
     "winston-transport": "^4.2.0"
