@@ -4,7 +4,7 @@ import * as Winston from "winston";
 
 export interface IConfig {
   token: string;
-  apiUrl: string;
+  websocketUrl: string;
   database: Knex.Config;
   presence: Discord.PresenceData;
   log: ILogConfig;
@@ -38,4 +38,22 @@ export interface IDBChannel {
   guildId: string;
   channelId: string;
   ships: string;
+}
+
+export type WSData = {
+    id: string,
+    date: Date,
+    inProgress?: Quest,
+    upcoming: Quest[]
+}
+
+export type Quest = {
+    name: string;
+    date: Date;
+}
+
+export type Date = {
+    JP: string;
+    UTC: string;
+    difference: string;
 }

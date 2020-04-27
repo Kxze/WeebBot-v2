@@ -5,8 +5,6 @@ import knex from "knex";
 import * as winston from "winston";
 import { IConfig, IModuleParams } from "./types";
 import config from "./config";
-import DiscordTransporter from "./discordTransporter";
-import { EQWorker } from "./worker";
 
 const client = new Discord.Client();
 const db = knex(config.database);
@@ -38,6 +36,7 @@ const moduleParameters: IModuleParams = {
   logger
 };
 
+
 const modulesDir = path.join(__dirname, "modules");
 const modules = fs.readdirSync(modulesDir)
   .filter((file: string) => file.endsWith(".js"));
@@ -47,8 +46,18 @@ modules.forEach(module => {
     require(path.join(modulesDir, module)).default(moduleParameters);
     logger.info("Loaded module " + module);
   } catch (err) {
-    logger.error("Could not load module" + module);
+    logger.error(`Could not load module ${module}. Error: ${err}`);
   }
 });
 
-client.login(config.token);
+db.schema.hasTable("channels")
+    .then(exists => {
+        if (!exists) {
+            return db.schema.createTable("channels", table => {
+                table.string("id");
+                table.boolean("shouldAlert");
+                table.timestamps();
+            })
+        }
+    })
+    .then(() => client.login(config.token));

@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 
 export default ({ client, config, db, logger }: IModuleParams) => {
   client.on("message", async (message) => {
-    if (message.content === "+cat") {
+    if (message.isMentioned(client.user) && message.content.includes("cat")) {
       const response = await fetch("http://edgecats.net/random");
       if (response.status !== 200) {
         logger.warn("Cat API error. Status: " + response.status);

@@ -2,7 +2,7 @@ import { IConfig } from "./types";
 
 export default {
   token: process.env.WB_DISCORD_TOKEN || "",
-  apiUrl: process.env.WB_API_URL || "http://pso2.rodrigo.li/eq/",
+  websocketUrl: process.env.WB_API_URL || "http://pso2.rodrigo.li/eq/",
   database: {
     client: process.env.WB_DATABASE_CLIENT || "mysql",
     connection: {
@@ -14,8 +14,8 @@ export default {
   },
   presence: {
     game: {
-      name: process.env.WB_GAME_NAME || "http://wb.rodrigo.li",
-      url: process.env.WB_GAME_URL || "http://wb.rodrigo.li"
+      name: process.env.WB_GAME_NAME || "https://leite.dev",
+      url: process.env.WB_GAME_URL || "https://leite.dev"
     },
     status: "online"
   },
