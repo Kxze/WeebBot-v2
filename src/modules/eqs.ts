@@ -5,6 +5,7 @@ import moment from "moment";
 
 export default ({ client, config, db, logger }: IModuleParams) => {
 
+    console.log(config.websocketUrl);
     const ws = io(config.websocketUrl, {
         transports: ["websocket"]
     });
