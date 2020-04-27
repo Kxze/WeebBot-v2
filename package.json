@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kxze/WeebBot-v2.git"
+    "url": "git+https://github.com/RodrigoLeiteF/WeebBot-v2.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Kxze/WeebBot-v2/issues"
+    "url": "https://github.com/RodrigoLeiteF/WeebBot-v2/issues"
   },
-  "homepage": "https://github.com/Kxze/WeebBot-v2#readme",
+  "homepage": "https://github.com/RodrigoLeiteF/WeebBot-v2#readme",
   "dependencies": {
     "discord.js": "^11.3.2",
     "knex": "^0.15.0",
@@ -26,7 +26,7 @@
     "node-fetch": "^2.1.2",
     "socket.io-client": "^2.3.0",
     "typescript": "^2.9.2",
-    "winston": "github:winstonjs/winston#master",
+    "winston": "^3.2.1",
     "winston-transport": "^4.2.0"
   },
   "devDependencies": {
