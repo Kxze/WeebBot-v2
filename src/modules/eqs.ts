@@ -5,7 +5,7 @@ import moment from "moment";
 
 export default ({ client, config, db, logger }: IModuleParams) => {
 
-    const ws = io("http://localhost:8080");
+    const ws = io(config.websocketUrl);
 
     const handleQuest = async (message: any) => {
         logger.info("New EQ received. Sending...");
