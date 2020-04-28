@@ -16,7 +16,7 @@ export default ({ client, config, db, logger }: IModuleParams) => {
 
         const channels: { id: string }[] = await db("channels")
             .select("id")
-            .where({ shouldAlert: true });
+            .where({ shouldAlert: 1 });
 
         const embed = buildEmbed(data);
         const promises = channels.map(async dbChannel => {
