@@ -66,14 +66,18 @@ export default ({ client, config, db, logger }: IModuleParams) => {
                     shouldAlert: channel.shouldAlert === 0 ? 1 : 0,
                 });
 
-                return message.reply(`Alerts ${channel.shouldAlert === 1 ? "disabled" : "enabled"}!`)
+                try {
+                    return message.reply(`Alerts ${channel.shouldAlert === 1 ? "disabled" : "enabled"}!`)
+                } catch (err) {}
             } else {
                 await db("channels").insert({
                     id: message.channel.id,
                     shouldAlert: true,
                 });
 
-                return message.reply("Alerts enabled!");
+                try {
+                    return message.reply("Alerts enabled!");
+                } catch (err) {}
             }
         }
     });

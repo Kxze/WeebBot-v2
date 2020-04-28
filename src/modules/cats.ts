@@ -7,7 +7,9 @@ export default ({ client, config, db, logger }: IModuleParams) => {
       const response = await fetch("http://edgecats.net/random");
       if (response.status !== 200) {
         logger.warn("Cat API error. Status: " + response.status);
-        return message.reply("Something went wrong. Please try again later.");
+          try {
+              return message.reply("Something went wrong. Please try again later.");
+          } catch (err) {}
       }
 
       try {
