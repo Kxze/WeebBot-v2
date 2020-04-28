@@ -62,9 +62,13 @@ export default ({ client, config, db, logger }: IModuleParams) => {
             const channel = channels[0];
 
             if (channel) {
-                await db("channels").update({
-                    shouldAlert: channel.shouldAlert === 0 ? 1 : 0,
-                });
+                await db("channels")
+                    .update({
+                        shouldAlert: channel.shouldAlert === 0 ? 1 : 0,
+                    })
+                    .where({
+                        id: channel.id
+                    });
 
                 try {
                     return message.reply(`Alerts ${channel.shouldAlert === 1 ? "disabled" : "enabled"}!`)
