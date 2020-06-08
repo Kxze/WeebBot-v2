@@ -1,7 +1,6 @@
 import { IModuleParams, WSData } from "../types";
 import * as Discord from "discord.js";
 import io from "socket.io-client";
-import moment from "moment";
 
 export default ({ client, config, db, logger }: IModuleParams) => {
 
