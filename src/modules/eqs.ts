@@ -43,6 +43,8 @@ export default ({ client, config, db, logger }: IModuleParams) => {
     ws.connect();
 
     client.on("message", async (message) => {
+        let member = message.member ? message.member : await message.guild.fetchMember(message.author.id);
+
         if (message.channel.type !== "text") return;
         
         if (message.isMentioned(client.user) &&
@@ -52,7 +54,7 @@ export default ({ client, config, db, logger }: IModuleParams) => {
 
         } else if (message.isMentioned(client.user) &&
             message.content.includes("alert") &&
-            message.member.hasPermission("MANAGE_CHANNELS")) {
+            member.hasPermission("MANAGE_CHANNELS")) {
 
             const channels = await db("channels").where({
                 id: message.channel.id
